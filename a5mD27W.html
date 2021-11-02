@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political</title>
+    <script>
+        function onSubmit(){
+            var arr = Array.from(document.getElementsByName("Question")).filter((b) => b.checked);
+            if(arr.length == 0) {
+                alert("You must pick an answer choice before pressing submit.");
+            }
+            else {
+                alert("Please scan the QR code labeled " + arr[0].getAttribute("qr"));
+            }
+        }
+
+        function onClear(){
+            var arr = Array.from(document.getElementsByName("Question")).filter((b) => b.checked);
+            if(arr.length == 1) {
+                arr[0].checked = false;
+            }
+        }
+    </script>
+    <style>
+        body {
+            background:#111111
+        }
+        header {
+            background: #000000;
+            padding: 0.05px;
+        }
+        header > p {
+            text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+        }
+        p, label {
+            color: #aaaaaa;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        label > input[type="radio"] {
+            display: none;
+        }
+
+        label > input[type="radio"] + * {
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        label > input[type="radio"] + *::before {
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            vertical-align: -3.7px;
+            margin-right: 0.3rem;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 0.1rem;
+            border-color: #aaaaaa;
+        }
+        label > input[type="radio"]:checked + *::before  {
+            size: 20px;
+            border-color:darkblue;
+            background: radial-gradient(darkblue 0%, darkblue 20%, transparent 70%, transparent);
+        }
+
+        label > input[type="radio"]:hover + *::before  {
+            size: 20px;
+            border-color:darkblue;
+            background: radial-gradient(darkblue 10%, darkblue 10%, transparent 20%, transparent);
+        }
+
+        fieldset {
+            margin: 20px;
+            max-width: 400px;
+        }
+        label > input[type="radio"]:checked + *::before {
+            margin-right: 15px;
+        }
+        label > input[type="radio"] + *::before {
+            margin-right: 10px;
+        }
+        label > input[type="radio"]:checked + *{
+            color: crimson;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        button:hover {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<header>
+    <p>Station 3: Political</p>
+</header>
+<body>
+    <form novalidate>
+        <p style="margin: 15px; margin-top: 30px;">Welcome to Station 3: Political! Use the information below to answer following question.<br/></p>
+        <p style="font-weight: bold; margin: 15px; margin-top: 30px;">
+            Throughout the 1600s, the Dutch gradually expelled the Portuguese from trading ports in the East Indies, while the Portuguese reclaim areas owned by the Dutch East India Company, such as Brazil. This is partially the result of the Dutch-Portuguese War, which ends in a truce. The Dutch also have a rivalry with Muslim traders who already occupied the Spice Islands when they reached them. In order to ensure their trade monopolies in the region, these traders were forced to leave these islands.
+        </p>
+        <p style="margin: 15px; margin-top: 30px;">In what way did the Dutch Empire’s territory increase/decrease during the mid-to-late 1600s?</p>
+        <label><input type="radio" name="Question" qr="1T" required>  <span>The Dutch conquered most of England and Spain</span></label>
+        <br>
+        <label><input type="radio" name="Question" qr="2T" required>  <span>The Dutch continued to lose large amounts of land in the Spice Islands</span></label>
+        <br>
+        <label><input type="radio" name="Question" qr="3T" required>  <span>The Dutch lost major areas owned by the WIC to the Portuguese</span></label>
+        <br>
+        <label><input type="radio" name="Question" qr="4T" required>  <span>The Dutch gained most of modern-day Canada as the result of the Eighty Years’ War</span></label>
+        <br>
+        <button style="margin-left: 15px; margin-right: 15px; margin-top: 10px" onclick="javascript:onSubmit()">Submit</button> <button style="margin-bottom: 10px" onclick="javascript:onClear()">Clear</button>
+        <br>
+    </form>
+</body>
+</html>

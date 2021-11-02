@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <script>
+        function onSubmit(){
+            var arr = Array.from(document.getElementsByName("Intro Question")).filter((b) => b.checked);
+            if(arr.length == 0) {
+                alert("You must pick an answer choice before pressing submit.");
+            }
+            else {
+                alert("Please scan the QR code labeled " + arr[0].getAttribute("qr"));
+            }
+        }
+
+        function onClear(){
+            var arr = Array.from(document.getElementsByName("Intro Question")).filter((b) => b.checked);
+            if(arr.length == 1) {
+                arr[0].checked = false;
+            }
+        }
+    </script>
+    <style>
+        body {
+            background:#111111
+        }
+        header {
+            background: #000000;
+            padding: 0.05px;
+        }
+        header > p {
+            text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+        }
+        p, label {
+            color: #aaaaaa;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        label > input[type="radio"] {
+            display: none;
+        }
+
+        label > input[type="radio"] + * {
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        label > input[type="radio"] + *::before {
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            vertical-align: -3.7px;
+            margin-right: 0.3rem;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 0.1rem;
+            border-color: #aaaaaa;
+        }
+        label > input[type="radio"]:checked + *::before  {
+            size: 20px;
+            border-color:darkblue;
+            background: radial-gradient(darkblue 0%, darkblue 20%, transparent 70%, transparent);
+        }
+
+        label > input[type="radio"]:hover + *::before  {
+            size: 20px;
+            border-color:darkblue;
+            background: radial-gradient(darkblue 10%, darkblue 10%, transparent 20%, transparent);
+        }
+
+        fieldset {
+            margin: 20px;
+            max-width: 400px;
+        }
+        label > input[type="radio"]:checked + *::before {
+            margin-right: 15px;
+        }
+        label > input[type="radio"] + *::before {
+            margin-right: 10px;
+        }
+        label > input[type="radio"]:checked + *{
+            color: crimson;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        button:hover {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<header>
+    <p>Introduction</p>
+</header>
+<body>
+    <form novalidate>
+        <p style="margin: 15px; margin-top: 40px;">Welcome to the Dutch Empire QR Maze!<br/><br/>To get here, you scanned the QR code in the row labeled "Introduction." If you get the question at this station right, you will be told which QR code to scan next. If you answer incorrectly, well... you may find out soon enough.</p>
+        <p style="margin: 15px; margin-top: 30px;">Here's an easy question to get you started! Use the timeline below to answer it.<br/></p>
+        <p style="font-weight: bold; margin: 15px; margin-top: 30px;">
+            1595: The Dutch invent the fluyt, a cargo vessel<br/>
+            1595: The Dutch reach Java<br/>
+            1602: The Dutch East India Company (VOC) is founded<br/>
+            1619: Bastavia is founded by the Dutch, replacing Jakarta<br/>
+            1621: The Twelve Years’ Truce in the Dutch Revolt from Spain ends<br/>
+            1621: The Dutch West India Company (WIC) is founded; it gains Fort Nassau<br/>
+            1625: The WIC establishes New Amsterdam in present-day New York<br/>
+            1630: Dutch Brazil is founded by the WIC<br/>
+            1630s: The Dutch begin their involvement in the Slave Trade<br/>
+            1654: Dutch Brazil is reacquired by the Portuguese<br/>
+            1658: The portuguese are expelled from Sri Lanka by the Dutch<br/>
+            1664: New Netherland is conquered by the English
+        </p>
+        <p style="margin: 15px; margin-top: 30px;">How far apart was the establishment of Dutch Brazil and its transfer to the Portuguese?</p>
+        <label><input type="radio" name="Intro Question" qr="1S" required>  <span>4 years</span></label>
+        <br>
+        <label><input type="radio" name="Intro Question" qr="2S" required>  <span>24 years</span></label>
+        <br>
+        <label><input type="radio" name="Intro Question" qr="3S" required>  <span>19 years</span></label>
+        <br>
+        <label><input type="radio" name="Intro Question" qr="4S" required>  <span>14 years</span></label>
+        <br>
+        <button style="margin-left: 15px; margin-right: 15px; margin-top: 10px" onclick="javascript:onSubmit()">Submit</button> <button style="margin-bottom: 10px" onclick="javascript:onClear()">Clear</button>
+        <br>
+    </form>
+</body>
+</html>

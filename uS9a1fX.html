@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology</title>
+    <script>
+        function onSubmit(){
+            var arr = Array.from(document.getElementsByName("Question")).filter((b) => b.checked);
+            if(arr.length == 0) {
+                alert("You must pick an answer choice before pressing submit.");
+            }
+            else {
+                alert("Please scan the QR code labeled " + arr[0].getAttribute("qr"));
+            }
+        }
+
+        function onClear(){
+            var arr = Array.from(document.getElementsByName("Question")).filter((b) => b.checked);
+            if(arr.length == 1) {
+                arr[0].checked = false;
+            }
+        }
+    </script>
+    <style>
+        body {
+            background:#111111
+        }
+        header {
+            background: #000000;
+            padding: 0.05px;
+        }
+        header > p {
+            text-align: center;
+            color: #ffffff;
+            font-size: 50px;
+        }
+        p, label {
+            color: #aaaaaa;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+        label > input[type="radio"] {
+            display: none;
+        }
+
+        label > input[type="radio"] + * {
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        label > input[type="radio"] + *::before {
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            vertical-align: -3.7px;
+            margin-right: 0.3rem;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 0.1rem;
+            border-color: #aaaaaa;
+        }
+        label > input[type="radio"]:checked + *::before  {
+            size: 20px;
+            border-color:darkblue;
+            background: radial-gradient(darkblue 0%, darkblue 20%, transparent 70%, transparent);
+        }
+
+        label > input[type="radio"]:hover + *::before  {
+            size: 20px;
+            border-color:darkblue;
+            background: radial-gradient(darkblue 10%, darkblue 10%, transparent 20%, transparent);
+        }
+
+        fieldset {
+            margin: 20px;
+            max-width: 400px;
+        }
+        label > input[type="radio"]:checked + *::before {
+            margin-right: 15px;
+        }
+        label > input[type="radio"] + *::before {
+            margin-right: 10px;
+        }
+        label > input[type="radio"]:checked + *{
+            color: crimson;
+        }
+
+        button {
+            font-size: 20px;
+        }
+
+        button:hover {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<header>
+    <p>Station 4: Technology</p>
+</header>
+<body>
+    <form novalidate>
+        <p style="margin: 15px; margin-top: 30px;">Welcome to Station 4: Technology! Use the information below to answer following question.<br/></p>
+        <p style="font-weight: bold; margin: 15px; margin-top: 30px;">
+            The fluyt was a ship invented by Dutch in 1595. Its purpose was to serve as a cargo vessel and it increased the efficiency of trade by its design. The ship is long and narrow to carry the most goods possible. Its facilitation of trade helped make Holland a maritime power in the 1600s. 
+        </p>
+        <p style="margin: 15px; margin-top: 30px;">How did the fluyt facilitate trade?</p>
+        <label><input type="radio" name="Question" qr="1G" required>  <span>It was by far the fastest ship at the time</span></label>
+        <br>
+        <label><input type="radio" name="Question" qr="2G" required>  <span>It was a trading port that helped grow New Amsterdam</span></label>
+        <br>
+        <label><input type="radio" name="Question" qr="3G" required>  <span>Its elongated shape allowed it to carry more cargo</span></label>
+        <br>
+        <label><input type="radio" name="Question" qr="4G" required>  <span>It was a warship that was key to the Dutch revolt from Habsburg Spain</span></label>
+        <br>
+        <button style="margin-left: 15px; margin-right: 15px; margin-top: 10px" onclick="javascript:onSubmit()">Submit</button> <button style="margin-bottom: 10px" onclick="javascript:onClear()">Clear</button>
+        <br>
+    </form>
+</body>
+</html>
